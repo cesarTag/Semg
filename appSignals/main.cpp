@@ -8,7 +8,7 @@ int main(int argc, char *argv[])
     QApplication a(argc, argv);
     MainWindow w;
 
-    QSplashScreen *splash = new QSplashScreen(QPixmap("ucm.png"),Qt::WindowStaysOnTopHint | Qt::SplashScreen);
+    QSplashScreen *splash = new QSplashScreen(QPixmap("/home/cesar/Git/appSignal/ucm.png"),Qt::WindowStaysOnTopHint | Qt::SplashScreen);
     splash->show();
     //splash->showMessage("Iniciando ventana principal ...");
 
