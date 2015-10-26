@@ -68,7 +68,7 @@ void MainWindow::on_botonCargar_clicked(){
         //QTextStream (stdout)<<"x="<<x.at(i)<<" y="<<y.at(i)<<endl;
         i++;
     }
-    grafica(ui->grafico1,x,y);
+    grafica(ui->grafico1,x,y,1);
 
 
 
@@ -108,14 +108,29 @@ void MainWindow::habilita(){
 }
 
 
-void MainWindow::grafica(QCustomPlot *grafico, QVector<double> x, QVector<double> y){
+void MainWindow::grafica(QCustomPlot *grafico, QVector<double> x, QVector<double> y, int tipo){
 
     // create graph and assign data to it:
     grafico->addGraph();
-    grafico->graph(0)->setData(x,y);
-    grafico->setInteractions(QCP::iRangeDrag|QCP::iRangeZoom);
-    grafico->graph(0)->setLineStyle(QCPGraph::lsImpulse);
-    grafico->graph(0)->setScatterStyle(QCPScatterStyle(QCPScatterStyle::ssCircle,Qt::blue,Qt::white,3));
+    switch (tipo){
+        case 1: grafico->graph(0)->setData(x,y);
+                grafico->setInteractions(QCP::iRangeDrag|QCP::iRangeZoom);
+                break;
+        case 2: grafico->graph(0)->setData(x,y);
+                grafico->setInteractions(QCP::iRangeDrag|QCP::iRangeZoom);
+                grafico->graph(0)->setLineStyle(QCPGraph::lsImpulse);
+                grafico->graph(0)->setScatterStyle(QCPScatterStyle(QCPScatterStyle::ssCircle,Qt::blue,Qt::white,3));
+                break;
+        case 3: grafico->graph(0)->setData(x,y);
+                grafico->setInteractions(QCP::iRangeDrag|QCP::iRangeZoom);
+                grafico->graph(0)->setLineStyle(QCPGraph::lsImpulse);
+                grafico->graph(0)->setScatterStyle(QCPScatterStyle(QCPScatterStyle::ssCircle,Qt::blue,Qt::white,3));
+                break;
+        default:
+                QTextStream (stdout)<<"Error en el tipo de grafico "<<endl;
+
+    }
+
     grafico->graph(0)->rescaleAxes();
     grafico->replot();
 
@@ -163,7 +178,7 @@ void MainWindow::openOctave(QString opcion){
     }
     changeType(salida,signal,size);
 
-    grafica(ui->grafico2,x,signal);
+    grafica(ui->grafico2,x,signal,2);
 
 }
 

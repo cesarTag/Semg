@@ -25,7 +25,7 @@ public:
 private slots:
     void on_botonCargar_clicked();
     void openOctave(QString opcion);
-    void grafica(QCustomPlot *grafico, QVector<double> x, QVector<double> y );
+    void grafica(QCustomPlot *grafico, QVector<double> x, QVector<double> y , int tipo);
     void habilita();
     int leer(QFile &fin, QList<Pto> & lista);
     void on_botonGraficar_clicked();
